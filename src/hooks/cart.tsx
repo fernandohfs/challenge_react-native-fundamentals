@@ -34,8 +34,6 @@ const CartProvider: React.FC = ({ children }) => {
         '@GoMarketplace:products',
       );
 
-      console.log(storagedProducts);
-
       if (storagedProducts) {
         setProducts(JSON.parse(storagedProducts));
       }
