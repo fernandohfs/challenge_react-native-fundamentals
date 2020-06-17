@@ -44,20 +44,16 @@ const CartProvider: React.FC = ({ children }) => {
 
   const addToCart = useCallback(
     async product => {
-      const existsProduct = products.find(p => p.id === product.id);
+      const productExists = products.find(p => p.id === product.id);
 
-      if (existsProduct) {
-        existsProduct.quantity += 1;
+      if (productExists) {
+        productExists.quantity += 1;
 
-        const newProducts = products.map(p =>
-          p.id === product.id ? existsProduct : p,
+        setProducts(
+          products.map(p => (p.id === product.id ? productExists : p)),
         );
-
-        setProducts(newProducts);
       } else {
-        const productToAdd = { ...product, quantity: 1 };
-
-        setProducts([...products, productToAdd]);
+        setProducts([...products, { ...product, quantity: 1 }]);
       }
 
       await AsyncStorage.setItem(
