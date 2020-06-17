@@ -72,12 +72,12 @@ const CartProvider: React.FC = ({ children }) => {
         product.quantity += 1;
 
         setProducts(products.map(p => (p.id === product.id ? product : p)));
-
-        await AsyncStorage.setItem(
-          '@GoMarketplace:products',
-          JSON.stringify(products),
-        );
       }
+
+      await AsyncStorage.setItem(
+        '@GoMarketplace:products',
+        JSON.stringify(products),
+      );
     },
     [products],
   );
@@ -90,12 +90,12 @@ const CartProvider: React.FC = ({ children }) => {
         product.quantity -= 1;
 
         setProducts(products.map(p => (p.id === product.id ? product : p)));
-
-        await AsyncStorage.setItem(
-          '@GoMarketplace:products',
-          JSON.stringify(products),
-        );
       }
+
+      await AsyncStorage.setItem(
+        '@GoMarketplace:products',
+        JSON.stringify(products),
+      );
     },
     [products],
   );
